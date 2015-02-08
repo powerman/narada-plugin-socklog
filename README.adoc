@@ -1,0 +1,44 @@
+Narada plugin: socklog
+======================
+
+This repo contains extra files needed to add syslog-compatible
+http://smarden.org/socklog/[log service] for Narada projects.
+
+There are different sets of files available in different branches:
+
+master:: plugin files which you should merge into your project
+
+doc:: (this branch) no plugin files, only documentation about this repo
+
+NOTE: Instead of manually merging this plugin you can use alternative set
+of base files when creating new Narada project available in
+https://github.com/powerman/narada-base/tree/socklog[narada-base's
+"socklog" branch].
+
+
+== Dependencies
+
+You should have http://smarden.org/socklog/[socklog] installed (either
+system-wide or in your home directory with it binaries available in
+`$PATH`).
+
+Require https://github.com/powerman/narada-plugin-runit[narada plugin
+runit].
+
+
+== Usage
+
+Configure all applications in your project to send their logs to syslog,
+using UNIX socket `var/lock.sock` instead of default `/dev/log`.
+
+Use `var/log/config` to configure
+http://smarden.org/runit/svlogd.8.html[svlogd] (log size, rotation,
+filtering, etc.).
+
+You can store different messages in different log files. To implement this
+you should create several subdirectories in `var/log/` with
+`var/log/*/config` files, to define which messages should be stored in
+each log directory, and restart log subservice with `sv t
+./service/log/log/`.
+
+
