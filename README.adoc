@@ -2,7 +2,8 @@ Narada plugin: socklog
 ======================
 
 This repo contains extra files needed to add syslog-compatible
-http://smarden.org/socklog/[log service] for Narada projects.
+http://smarden.org/socklog/[log service] for
+https://github.com/powerman/Narada[Narada] projects.
 
 There are different sets of files available in different branches:
 
